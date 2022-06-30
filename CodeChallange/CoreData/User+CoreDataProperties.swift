@@ -21,6 +21,7 @@ extension User {
     @NSManaged public var email: String?
     @NSManaged public var gender: String?
     @NSManaged public var phoneNumber: String?
+    @NSManaged public var userProfileImage: Data?
 
 }
 

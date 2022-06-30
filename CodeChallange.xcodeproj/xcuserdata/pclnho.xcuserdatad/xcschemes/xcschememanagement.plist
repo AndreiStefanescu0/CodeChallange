@@ -7,7 +7,25 @@
 		<key>CodeChallange.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>89C458E228658BDC009537CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>89C458FB28658BDD009537CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>89C4590528658BDD009537CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

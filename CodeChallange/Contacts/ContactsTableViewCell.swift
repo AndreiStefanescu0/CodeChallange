@@ -8,16 +8,19 @@
 import UIKit
 
 class ContactsTableViewCell: UITableViewCell {
-
+    @IBOutlet private weak var contactImageView: UIImageView!
+    @IBOutlet private weak var contactNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        contactImageView.layer.cornerRadius = contactImageView.frame.height/2
     }
     
+    func configureCell(user: User) {
+        guard let userImage = user.userProfileImage else { return }
+        contactNameLabel.text = user.name
+        if let image = UIImage(data: userImage) {
+        contactImageView.image = image
+        }
+    }
 }

@@ -8,10 +8,10 @@
 import Foundation
 
 struct UserInfo: Decodable {
-    let id: Int?
-    let name: String?
+    let id: Int16
+    let name: String
     let phoneNumber: String?
     let status: String?
     let gender: String?
-    let email: String
+    let email: String?
 }

@@ -1,70 +1,82 @@
 //
-//  ViewController.swift
+//  ContactsViewController.swift
 //  CodeChallange
 //
 //  Created by Andrei Stefanescu on 24.06.2022.
 //
-import Alamofire
+
 import UIKit
-import CoreData
 
 class ContactsViewController: UIViewController {
     
+    @IBOutlet private weak var addNewButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
+    
+    private var items: [User]?
+    private var urlSession: URLSession = URLSession()
+    var viewModel: ContactsViewModel?
+    var delegate: ContactsViewModelDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getContacts()
+        viewModel?.contactsViewModelDelegate = self
+        titleLabel.text = "Contacte"
+        addNewButton.layer.cornerRadius = 7
+        addNewButton.layer.borderColor = UIColor(named: "backgroundColor")?.cgColor
+        addNewButton.layer.borderWidth = 2
+        tableView.register(UINib(nibName: "ContactsTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactsTableViewCell")
     }
     
-    func getContacts() {
-        AF.request("https://gorest.co.in/public/v2/users").response { [weak self] response in
-            switch response.result {
-            case .success( _):
-                let jsonDecoder = JSONDecoder()
-                jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-                if let data = response.data, let contacts = try? jsonDecoder.decode([UserInfo].self, from: data).filter({ $0.status == "active"}) {
-                    self?.addContacts(contacts: contacts)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.fetchData(completion: { [weak self] users in
+            self?.items = users
+            self?.tableView.reloadData()
+        })
     }
     
-    func addContacts(contacts: [UserInfo]) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        guard let entity = NSEntityDescription.entity(forEntityName: "User", in : managedContext) else { return }
-        let record = NSManagedObject(entity: entity, insertInto: managedContext)
-        contacts.forEach {
-            record.setValue($0.name, forKey: "name")
-            record.setValue($0.id, forKey: "id")
-            record.setValue($0.email, forKey: "email")
-            record.setValue($0.gender, forKey: "gender")
-        }
-        do {
-            try managedContext.save()
-            print("Record Added!")
-        } catch
-            let error as NSError {
-            print("Could not save. \(error),\(error.userInfo)")
-        }
+    @IBAction func didTapAddNewButton(_ sender: Any) {
+        goToContactDetail(nil)
+    }
+    
+    private func goToContactDetail(_ user: User?) {
+        viewModel?.goToContactDetail(user)
     }
 }
 
 extension ContactsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = 
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsTableViewCell", for: indexPath) as? ContactsTableViewCell else { return UITableViewCell() }
+        guard let item = items?[indexPath.row] else { return UITableViewCell() }
+        cell.configureCell(user: item)
+        return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "CONTACTELE MELE"
+    }
 }
 
 extension ContactsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.TableViewConstants.contactsTableViewCellHeight.rawValue
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let user = items?[indexPath.row] else { return }
+        goToContactDetail(user)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension ContactsViewController: ContactsViewModelDelegate {
+    func retrieveContacts(users: [User]) {
+        items = users
+        tableView.reloadData()
+    }
 }
