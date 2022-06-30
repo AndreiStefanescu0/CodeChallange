@@ -23,16 +23,27 @@ enum Error: String, LocalizedError {
 }
 
 class LocalStorage {
-    private var context: NSManagedObjectContext
-    private var appDelegate: AppDelegate
+    private var context: NSManagedObjectContext?
+    private var container: NSPersistentContainer {
+        let container = NSPersistentContainer(name: "User")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }
     
-    init(context: NSManagedObjectContext, appDelegate: AppDelegate) {
+    init(context: NSManagedObjectContext? = nil) {
         self.context = context
-        self.appDelegate = appDelegate
+        if context == nil {
+            self.context = container.viewContext
+        }
     }
     
     func saveRecord(user: UserInfo, imageData: Data, completion: @escaping ([User]) -> (Void)) {
-        guard let entity = NSEntityDescription.entity(forEntityName: "User", in : context) else {
+        guard let context = context,
+            let entity = NSEntityDescription.entity(forEntityName: "User", in : context) else {
             return
         }
         let record = NSManagedObject(entity: entity, insertInto: context)
@@ -50,6 +61,9 @@ class LocalStorage {
     }
     
     func updateUser(user: UserInfo, completion: @escaping () -> (Void)) {
+        guard let context = context else {
+            return
+        }
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id = %i", user.id as CVarArg)
         do {
@@ -70,6 +84,10 @@ class LocalStorage {
     }
     
     func fetchRecords() -> [User] {
+        guard let context = context else {
+            return []
+        }
+
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         do {
             return try context.fetch(fetchRequest)

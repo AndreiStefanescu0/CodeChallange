@@ -13,12 +13,10 @@ import UIKit
 class CodeChallangeTests: XCTestCase {
     
     private var localStorage: LocalStorage?
-    private var context = TestCoreDataStack().persistentContainer.newBackgroundContext()
+    private var context = MockCoreData().persistentContainer.newBackgroundContext()
     
     override func setUpWithError() throws {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        localStorage = LocalStorage(context: context, appDelegate: appDelegate)
-        
+        localStorage = LocalStorage(context: context)
     }
     
     override func tearDownWithError() throws {
@@ -51,25 +49,10 @@ class CodeChallangeTests: XCTestCase {
             return true
         }
         localStorage?.saveRecord(user: user, imageData: imageData, completion: { fetchRecords in
-            self.waitForExpectations(timeout: 2.0) { error in
+            self.waitForExpectations(timeout: 5.0) { error in
                 XCTAssertNil(error, "Save did not occur")
             }
             completion(fetchRecords)
         })
     }
-}
-
-class TestCoreDataStack: NSObject {
-    lazy var persistentContainer: NSPersistentContainer = {
-        let description = NSPersistentStoreDescription()
-        description.url = URL(fileURLWithPath: "/dev/null")
-        let container = NSPersistentContainer(name: "User")
-        container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores { _, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        }
-        return container
-    }()
 }

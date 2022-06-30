@@ -16,8 +16,8 @@ protocol ContactsNavigationDelegate: AnyObject {
 }
 
 class ContactsViewModel {
-    private var localStorage: LocalStorage
     var contactsViewModelDelegate: ContactsViewModelDelegate?
+    private var localStorage: LocalStorage
     private var contactsNavigationDelegate: ContactsNavigationDelegate
     private var urlSession: URLSession
     

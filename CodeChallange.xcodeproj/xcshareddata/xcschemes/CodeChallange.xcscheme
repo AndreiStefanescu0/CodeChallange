@@ -39,16 +39,6 @@
                ReferencedContainer = "container:CodeChallange.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "89C4590528658BDD009537CB"
-               BuildableName = "CodeChallangeUITests.xctest"
-               BlueprintName = "CodeChallangeUITests"
-               ReferencedContainer = "container:CodeChallange.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

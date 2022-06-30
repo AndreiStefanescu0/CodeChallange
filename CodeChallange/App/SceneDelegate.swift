@@ -14,6 +14,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
+        let app = UIApplication.shared
+        if !(app.delegate is AppDelegate) && app.supportsMultipleScenes {
+            app.requestSceneSessionDestruction(session, options: nil)
+        }
         guard let root = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ContactsViewController") as? ContactsViewController else { return }
         window?.rootViewController = root
         appInitiater = AppInitiater(window: window!)
@@ -48,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+       // (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
 

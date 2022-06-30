@@ -45,7 +45,7 @@ class ContactDetailViewController: UIViewController {
     
     @IBAction func didTapSaveButton(_ sender: Any) {
         if let name = nameTextField.text, let surename = surenameTextField.text, !name.isEmpty, !surename.isEmpty {
-            viewModel?.updateData(name: name, surename: surename, email: emailTextField.text, phone: phoneTextField.text, completion: {
+            viewModel?.updateData(name: name, surename: surename, email: emailTextField.text, phone: phoneTextField.text ?? "", completion: {
                 self.navigationController?.popViewController(animated: true)
             })
         }
@@ -63,16 +63,5 @@ extension ContactDetailViewController: ContactDetailViewModelDelegate {
         }
         titleLabel.text = screenTitle
         saveButton.setTitle(buttonTitle, for: .normal)
-    }
-}
-
-extension String {
-    func isValidPhone() -> Bool {
-        if self.isEmpty || self == "" {
-            return true
-        }
-        let phoneRegex = "^[0][7]\\d{8}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        return phoneTest.evaluate(with: self)
     }
 }

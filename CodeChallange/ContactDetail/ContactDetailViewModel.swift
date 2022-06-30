@@ -26,19 +26,21 @@ class ContactDetailViewModel {
     }
     
     func getInfo() {
-        contactDetailViewModelDelegate?.getData(user: user, buttonTitle: isNewContact ? "Salveaza" : "Actualizeaza", screenTitle: isNewContact ? "Adauga contacte" : "Informatii contact")
+        contactDetailViewModelDelegate?.getData(user: user, buttonTitle: isNewContact ? "Salvează" : "Actualizează", screenTitle: isNewContact ? "Adaugă contact" : "Informații contact")
     }
     
-    func updateData(name: String, surename: String, email: String?, phone: String?, completion: @escaping () -> Void) {
-        if let user = user {
-            localStorage.updateUser(user:  UserInfo(id: user.id, name: "\(name) \(surename)", phoneNumber: phone, status: "active", gender: user.gender, email: email), completion: {
-                completion()
-            })
-        } else {
-            let userID = Int16.random(in: 1000...9999)
-            addNewUser(user: UserInfo(id: userID, name: "\(name) \(surename)", phoneNumber: phone, status: "active", gender: nil, email: email), completion: {
-                completion()
-            })
+    func updateData(name: String, surename: String, email: String?, phone: String, completion: @escaping () -> Void) {
+        if isValidPhone(phone) {
+            if let user = user {
+                localStorage.updateUser(user:  UserInfo(id: user.id, name: "\(name) \(surename)", phoneNumber: phone, status: "active", gender: user.gender, email: email), completion: {
+                    completion()
+                })
+            } else {
+                let userID = Int16.random(in: 1000...9999)
+                addNewUser(user: UserInfo(id: userID, name: "\(name) \(surename)", phoneNumber: phone, status: "active", gender: nil, email: email), completion: {
+                    completion()
+                })
+            }
         }
     }
     
@@ -58,5 +60,14 @@ class ContactDetailViewModel {
                 }
             })
         }
+    }
+    
+    private func isValidPhone(_ phone: String) -> Bool {
+        if phone.isEmpty || phone == "" {
+            return true
+        }
+        let phoneRegex = "^[0][7]\\d{8}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phoneTest.evaluate(with: phone)
     }
 }

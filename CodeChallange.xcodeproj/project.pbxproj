@@ -14,6 +14,9 @@
 		890AEE7128660FD200926574 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890AEE6F28660FD200926574 /* ContactsTableViewCell.swift */; };
 		890AEE7228660FD200926574 /* ContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 890AEE7028660FD200926574 /* ContactsTableViewCell.xib */; };
 		890AEE782866102200926574 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890AEE772866102200926574 /* Constants.swift */; };
+		8963F3DC286DA10500780DE2 /* MockCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963F3DB286DA10500780DE2 /* MockCoreData.swift */; };
+		8963F3DE286DA1B900780DE2 /* MockAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963F3DD286DA1B800780DE2 /* MockAppDelegate.swift */; };
+		8963F3E0286DA23600780DE2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963F3DF286DA23600780DE2 /* main.swift */; };
 		89824611286B01E5004AA9FA /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89824610286B01E5004AA9FA /* URLSession.swift */; };
 		89824613286B091E004AA9FA /* AppInitiater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89824612286B091E004AA9FA /* AppInitiater.swift */; };
 		89824615286B0E68004AA9FA /* ContactDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89824614286B0E68004AA9FA /* ContactDetailViewModel.swift */; };
@@ -27,8 +30,6 @@
 		89C458F328658BDD009537CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89C458F228658BDD009537CB /* Assets.xcassets */; };
 		89C458F628658BDD009537CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89C458F428658BDD009537CB /* LaunchScreen.storyboard */; };
 		89C4590128658BDD009537CB /* CodeChallangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C4590028658BDD009537CB /* CodeChallangeTests.swift */; };
-		89C4590B28658BDD009537CB /* CodeChallangeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C4590A28658BDD009537CB /* CodeChallangeUITests.swift */; };
-		89C4590D28658BDD009537CB /* CodeChallangeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C4590C28658BDD009537CB /* CodeChallangeUITestsLaunchTests.swift */; };
 		89E6EE642865DAA600BBAFE8 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E6EE632865DAA600BBAFE8 /* ContactsViewModel.swift */; };
 		E82394D1D7327827C0E16937 /* Pods_CodeChallange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52216EFC206846E7170570A4 /* Pods_CodeChallange.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,9 @@
 		890AEE6F28660FD200926574 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		890AEE7028660FD200926574 /* ContactsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsTableViewCell.xib; sourceTree = "<group>"; };
 		890AEE772866102200926574 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8963F3DB286DA10500780DE2 /* MockCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreData.swift; sourceTree = "<group>"; };
+		8963F3DD286DA1B800780DE2 /* MockAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppDelegate.swift; sourceTree = "<group>"; };
+		8963F3DF286DA23600780DE2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		89824610286B01E5004AA9FA /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		89824612286B091E004AA9FA /* AppInitiater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInitiater.swift; sourceTree = "<group>"; };
 		89824614286B0E68004AA9FA /* ContactDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewModel.swift; sourceTree = "<group>"; };
@@ -77,8 +81,6 @@
 		89C458FC28658BDD009537CB /* CodeChallangeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeChallangeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C4590028658BDD009537CB /* CodeChallangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeChallangeTests.swift; sourceTree = "<group>"; };
 		89C4590628658BDD009537CB /* CodeChallangeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeChallangeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		89C4590A28658BDD009537CB /* CodeChallangeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeChallangeUITests.swift; sourceTree = "<group>"; };
-		89C4590C28658BDD009537CB /* CodeChallangeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeChallangeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		89E6EE632865DAA600BBAFE8 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		F9C087DB299CA33278F2954F /* Pods-CodeChallange.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeChallange.release.xcconfig"; path = "Target Support Files/Pods-CodeChallange/Pods-CodeChallange.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 			children = (
 				89C458E628658BDC009537CB /* AppDelegate.swift */,
 				89C458E828658BDC009537CB /* SceneDelegate.swift */,
+				8963F3DF286DA23600780DE2 /* main.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -188,7 +191,6 @@
 			children = (
 				89C458E528658BDC009537CB /* CodeChallange */,
 				89C458FF28658BDD009537CB /* CodeChallangeTests */,
-				89C4590928658BDD009537CB /* CodeChallangeUITests */,
 				89C458E428658BDC009537CB /* Products */,
 				711CE27EA3EA58D5C5D91CFE /* Pods */,
 				5F4961DE510DCDE2823FAE42 /* Frameworks */,
@@ -228,17 +230,10 @@
 			isa = PBXGroup;
 			children = (
 				89C4590028658BDD009537CB /* CodeChallangeTests.swift */,
+				8963F3DB286DA10500780DE2 /* MockCoreData.swift */,
+				8963F3DD286DA1B800780DE2 /* MockAppDelegate.swift */,
 			);
 			path = CodeChallangeTests;
-			sourceTree = "<group>";
-		};
-		89C4590928658BDD009537CB /* CodeChallangeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				89C4590A28658BDD009537CB /* CodeChallangeUITests.swift */,
-				89C4590C28658BDD009537CB /* CodeChallangeUITestsLaunchTests.swift */,
-			);
-			path = CodeChallangeUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,6 +414,7 @@
 			files = (
 				890AEE642866038200926574 /* User.xcdatamodeld in Sources */,
 				890AEE782866102200926574 /* Constants.swift in Sources */,
+				8963F3E0286DA23600780DE2 /* main.swift in Sources */,
 				89824615286B0E68004AA9FA /* ContactDetailViewModel.swift in Sources */,
 				89E6EE642865DAA600BBAFE8 /* ContactsViewModel.swift in Sources */,
 				890AEE7128660FD200926574 /* ContactsTableViewCell.swift in Sources */,
@@ -440,6 +436,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8963F3DE286DA1B900780DE2 /* MockAppDelegate.swift in Sources */,
+				8963F3DC286DA10500780DE2 /* MockCoreData.swift in Sources */,
 				89C4590128658BDD009537CB /* CodeChallangeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,8 +446,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89C4590B28658BDD009537CB /* CodeChallangeUITests.swift in Sources */,
-				89C4590D28658BDD009537CB /* CodeChallangeUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

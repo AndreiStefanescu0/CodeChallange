@@ -19,8 +19,7 @@ class AppInitiater {
         rootViewController.setNavigationBarHidden(true, animated: false)
         let storyboard = UIStoryboard.init(name: "Main", bundle: .main)
         guard let contactVC = storyboard.instantiateViewController(withIdentifier: "ContactsViewController") as? ContactsViewController else { return }
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let localStorage = LocalStorage(context: appDelegate.persistentContainer.viewContext, appDelegate: appDelegate)
+        let localStorage = LocalStorage()
         let urlSession = URLSession()
         let contactViewModel = ContactsViewModel(localStorage: localStorage, contactsNavigationDelegate: self, urlSession: urlSession)
         contactVC.viewModel = contactViewModel

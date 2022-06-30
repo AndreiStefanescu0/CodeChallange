@@ -15,8 +15,8 @@ class ContactsViewController: UIViewController {
     
     private var items: [User]?
     private var urlSession: URLSession = URLSession()
+    private var delegate: ContactsViewModelDelegate?
     var viewModel: ContactsViewModel?
-    var delegate: ContactsViewModelDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
